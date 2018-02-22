@@ -7,21 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Utilisateur;
-import packDAO.UtilisateurDAO;
-
 /**
- * Servlet implementation class MapTest
+ * Servlet implementation class Connexion
  */
-@WebServlet("/MapTest")
-public class MapTest extends HttpServlet {
+@WebServlet("/connexion")
+public class Connexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private String API_KEY = "AIzaSyDQIRnlcNXqCHQV75eFmPe8Li6U_02u5xw";   
-    private String URL_VIEW = "/WEB-INF/index.jsp";
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MapTest() {
+    public Connexion() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,10 +27,7 @@ public class MapTest extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		UtilisateurDAO UserDAO = new UtilisateurDAO();
-		Utilisateur User = UserDAO.getUserByEmail("shysao@gmail.com", "123456");
-		System.out.println(User.getEmail());
-		this.getServletContext().getRequestDispatcher(URL_VIEW).forward( request, response );
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

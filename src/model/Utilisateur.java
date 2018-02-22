@@ -17,6 +17,14 @@ public class Utilisateur implements Serializable {
 		this.email = email;
 	}
 	
+	public Utilisateur(String nom, String prenom, String email, String password, String numTel) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.password = password;
+		this.numTel = Integer.parseInt(numTel);
+	}
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -35,7 +43,7 @@ public class Utilisateur implements Serializable {
 
 	private int note;
 
-	private String numTel;
+	private int numTel;
 
 	private String password;
 
@@ -111,11 +119,11 @@ public class Utilisateur implements Serializable {
 		this.note = note;
 	}
 
-	public String getNumTel() {
+	public int getNumTel() {
 		return this.numTel;
 	}
 
-	public void setNumTel(String numTel) {
+	public void setNumTel(int numTel) {
 		this.numTel = numTel;
 	}
 

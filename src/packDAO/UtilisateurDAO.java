@@ -23,11 +23,8 @@ public class UtilisateurDAO {
     	em = emF.createEntityManager();
     }
     
-    public void addUser() {
+    public void addUser(Utilisateur User) {
     	em.getTransaction().begin();
-    	Utilisateur User = new Utilisateur();
-    	User.setPrenom("Alison");
-    	User.setNom("Bonnan");
     	em.persist(User);
     	em.getTransaction().commit();
     	em.close();
