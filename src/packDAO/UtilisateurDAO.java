@@ -41,7 +41,7 @@ public class UtilisateurDAO {
     	@SuppressWarnings("unchecked")
 		List<Utilisateur> list = (List<Utilisateur>) query.getResultList();
     	for(Utilisateur u: list) {
-    		User = new Utilisateur(u.getEmail());
+    		User = u;
     	}
     	return User;
     }

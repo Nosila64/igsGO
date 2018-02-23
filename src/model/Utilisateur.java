@@ -22,7 +22,7 @@ public class Utilisateur implements Serializable {
 		this.prenom = prenom;
 		this.email = email;
 		this.password = password;
-		this.numTel = Integer.parseInt(numTel);
+		this.numTel = numTel;
 	}
 	
 	private static final long serialVersionUID = 1L;
@@ -43,7 +43,7 @@ public class Utilisateur implements Serializable {
 
 	private int note;
 
-	private int numTel;
+	private String numTel;
 
 	private String password;
 
@@ -119,11 +119,11 @@ public class Utilisateur implements Serializable {
 		this.note = note;
 	}
 
-	public int getNumTel() {
+	public String getNumTel() {
 		return this.numTel;
 	}
 
-	public void setNumTel(int numTel) {
+	public void setNumTel(String numTel) {
 		this.numTel = numTel;
 	}
 

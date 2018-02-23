@@ -64,15 +64,15 @@ public class Register extends HttpServlet {
         Map<String, String> form = new HashMap<String, String>();
         String actionMessage=null;
         String msgVal=null;
-       /*       
-        msgVal=validateEmail(email);
+        
+        msgVal=validateEmail(email+"@campus-igs-toulouse.fr");
         if(msgVal==null){
         	form.put(FIELD_EMAIL, email);
         }
         else{
             erreurs.put(FIELD_EMAIL, msgVal);
         }
-
+        
         msgVal=validatePwd(pwd, pwdConfirm);
         if(msgVal==null){
         	form.put(FIELD_PWD, pwd);
@@ -80,15 +80,7 @@ public class Register extends HttpServlet {
         else{
             erreurs.put(FIELD_CONFIRM_PWD, msgVal);
         }
-   
-        msgVal=validateName(name);
-        if(msgVal==null){
-        	form.put(FIELD_NAME, name);
-        }
-        else{
-            erreurs.put(FIELD_NAME, msgVal);
-        }
-      */
+        
         Utilisateur newUser=null;
         Map<String, Utilisateur> users = new HashMap<String, Utilisateur>();
         boolean errorStatus=true;
@@ -109,19 +101,39 @@ public class Register extends HttpServlet {
             actionMessage="Succès de l'inscription";            
             form = new HashMap<String, String>();
             errorStatus = false;
+            request.setAttribute("newUser", newUser);
+            request.setAttribute("form", form);
+            request.setAttribute("erreurs", erreurs);
+            request.setAttribute("errorStatus", errorStatus);
+            request.setAttribute("actionMessage", actionMessage);
             response.sendRedirect(request.getContextPath()+"/Dashboard");
+            
         }
         else{
         	actionMessage="Echec de l'inscription";
         	errorStatus = true;
-            response.sendRedirect("http://www.facebook.fr");
+        	request.setAttribute("erreurs", erreurs);
+            request.setAttribute("errorStatus", errorStatus);
+            request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+        	//response.sendRedirect(request.getContextPath()+"/MapTest");
         }
-        request.setAttribute("newUser", newUser);
-        request.setAttribute("form", form);
-        request.setAttribute("erreurs", erreurs);
-        request.setAttribute("errorStatus", errorStatus);
-        request.setAttribute("actionMessage", actionMessage);
+
       
+	}
+	
+	private String validateEmail( String email ) {
+		if ( email != null && email.trim().length() != 0 ) {
+			if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
+				return "Veuillez saisir une adresse mail valide";
+			}
+		}
+		else {
+			return "L'adresse mail est obligatoire";
+		}
+		return null;
+	}
+	private String validatePwd(String pwd1, String pwd2) {
+		return (pwd1.equals(pwd2))?null:"Veuillez confirmer le mot de passe";
 	}
 
 }

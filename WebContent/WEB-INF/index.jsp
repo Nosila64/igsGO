@@ -23,7 +23,7 @@
         <!-- <link rel="stylesheet" href="inc/font-awesome/css/font-awesome.min.css"> --> <!-- Font Icons -->
         
         <!-- Theme CSS -->
-        <link rel="stylesheet" href="CSS/style.css">
+        <link  rel="stylesheet" href="<c:url value="CSS/style.css"/>">
 
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -82,6 +82,7 @@
                                         </div>
                                     </div>
                                     <small id="emailHelp" class="form-text text-muted">Promis, on ne vous spammeras pas.</small>
+                                    ${ erreurs.mail }
                                 </div>
                                 <div class="form-group">
                                     <label for="InputPassword">Mot de passe</label>
@@ -91,6 +92,7 @@
                                         <label for="InputConfirmPassword">Confirmez le mot de passe</label>
                                         <input type="password" class="form-control" id="Confirmpassword" name="Confirmpassword" placeholder="Confirmation">
                                     </div>
+                                     ${ erreurs.Confirmpassword }
                                 <div class="form-group">
                                     <label for="InputTel">Téléphone</label>
                                     <input type="text" class="form-control bfh-phone" id="numTel" name="numTel" data-format="dddddddddd">
@@ -116,11 +118,11 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" action="connexion">
+                            <form method="post" action="login">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email</label>
                                     <div class="input-group mb-3">
-                                        <input type="text" id="mail" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon2">
+                                        <input type="text" id="mail" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon2">
                                             <div class="input-group-append">
                                                 <span class="input-group-text" id="basic-addon2">@campus-igs-toulouse.fr</span>
                                             </div>
@@ -128,8 +130,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mot de passe</label>
-                                    <input type="password" class="form-control" id="password" placeholder="*******">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="*******">
                                 </div>
+                                ${ statusMessage } <br />
                                 <button type="submit" class="btn btn-primary">Valider</button>
                             </form>
                         </div>
@@ -143,7 +146,7 @@
 
         <div id="MainContainer" class="container-fluid">
             <div id="MainRow" class="row">
-                <div class="col" onload="initialize()">
+                <div class="col-lg-6" onload="initialize()">
                         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQIRnlcNXqCHQV75eFmPe8Li6U_02u5xw&callback=initialize"
                         async defer></script>
                         <script>
@@ -201,12 +204,21 @@
                             </div>
                         </form>
                 </div>
-                <div class="col">
+                <div class="col-lg-6">
                     <div id="presentation">
                         <h1>PRESENTATION</h1>
+                        <br/>
+                        <h3>Salut les cornichons !</h3>
+                        <p>Bienvenue sur IGS GO, une application de covoiturage qui vous permettra… d’aller en cours en covoiturant !</p>
+                        <p>Notre service est entièrement gratuit et réservé aux étudiants du Campus IGS.</p>
+                        <br/>                                <p>Envie de rencontrer d’autres étudiants ?</p>
+                        <p>Envie de protéger l’environnement ?</p>
+                        <p>La conduite Toulousaine te déplait ?</p>
+                        <p>Marre des transports en communs ?</p>
+                        <br/>
+                        <p>Alors notre service est fait pour toi !</p>
+                        <p>Inscris-toi et rejoint le clan des cornichons malins, c’est gratuit !</p>
                         <img src="<c:url value="IMG/logo.png" />" width="150" height="150" class="d-inline-block align-center" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus magna, porttitor at fringilla a, imperdiet a nulla. Ut euismod gravida cursus. Donec vitae tempor magna, quis efficitur elit. Vestibulum vitae nulla risus. Duis lorem ligula, blandit sit amet purus at, sagittis sollicitudin augue. Nam facilisis massa eu leo sagittis ornare. Maecenas faucibus nibh erat, ac tincidunt enim sollicitudin sed. Phasellus sagittis lorem ut ligula ultricies, in volutpat neque tristique. Etiam congue nulla dui, nec auctor diam congue eget. Quisque rhoncus porttitor suscipit. Mauris mattis pharetra ultrices.</p>
-                        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus id malesuada turpis. Cras in elementum est, ut cursus risus. Curabitur tempor, risus ac ornare tempus, ex sapien mattis ligula, eu cursus nisi lectus et urna. Aliquam ut mauris aliquam, pellentesque justo sed, rutrum nunc. Praesent vel nunc eu ex finibus tincidunt nec vitae orci. Praesent quis erat scelerisque, tincidunt libero ut, imperdiet urna.</p>
                     </div>
                 </div>
             </div>
@@ -226,13 +238,13 @@
                         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 250px;">
                         <ul>
                             <li>
-                                <img src="<c:url value="IMG/Twitter.png" />" width="50" height="50" class="d-inline-block align-center" alt="">
+                                <a class="resLink" href="#"><img src="<c:url value="IMG/Twitter.png" />" width="50" height="50" class="d-inline-block align-center" alt=""></a>
                             </li>
                             <li>
-                                <img src="<c:url value="IMG/Facebook.png" />" width="50" height="50" class="d-inline-block align-center" alt="">
+                                <a class="resLink" href="#"><img src="<c:url value="IMG/Facebook.png" />" width="50" height="50" class="d-inline-block align-center" alt=""></a>
                             </li>
                             <li>
-                                <img src="<c:url value="IMG/Instagram.png" />" width="50" height="50" class="d-inline-block align-center" alt="">
+                                <a class="resLink" href="#"><img src="<c:url value="IMG/Instagram.png" />" width="50" height="50" class="d-inline-block align-center" alt=""></a>
                             </li>
                         </ul>
         
@@ -240,13 +252,23 @@
                     <div class="col">
                         <h4 class="text-uppercase font-weight-bold"><strong>Partenaires</strong></h4>
                         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 250px;">
-                        
+                        <ul>
+                            <li>
+                                <a class="resLink" href="#"><img src="<c:url value="IMG/GROUPE IGS.jpg" />" width="100" height="50" class="d-inline-block align-center" alt=""></a>
+                            </li>
+                            <li>
+                                <a class="resLink" href="#"><img src="<c:url value="IMG/mairieBlagnac.png" />" width="50" height="50" class="d-inline-block align-center" alt=""></a>
+                            </li>
+                            <li>
+                                <a class="resLink" href="#"><img src="<c:url value="IMG/WWF.jpg" />" width="50" height="50" class="d-inline-block align-center" alt=""></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-copyright py-3 text-center">
                 <div class="container-fluid">
-                    © 2017 Copyright: <a href=""><strong> IGS-GO.com</strong></a>
+                    © 2018 Copyright: <a href=""><strong> IGS-GO.com</strong></a>
                 </div>
             </div>
         </footer>
